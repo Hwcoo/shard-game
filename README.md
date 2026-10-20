@@ -10,10 +10,10 @@
 
 ## 在线试玩
 
-打开下面这个地址就能玩（手机、电脑都行）：
+**▶ [点这里直接玩](https://hwcoo.github.io/shard-game/)**（手机、电脑都行）
 
 ```text
-https://<你的用户名>.github.io/shard-game/
+https://hwcoo.github.io/shard-game/
 ```
 
 - iOS Safari：分享 → **添加到主屏幕**
