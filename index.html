@@ -2,6 +2,35 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8" />
+<script>
+window.__errLog = [];
+window.__showErr = function (msg) {
+  try {
+    window.__errLog.push(msg);
+    var d = document.getElementById('__errbar');
+    if (!d) {
+      d = document.createElement('div');
+      d.id = '__errbar';
+      d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#2a0b12;' +
+        'color:#ffd9e2;font:12px/1.55 ui-monospace,Consolas,monospace;padding:10px 12px;max-height:45%;' +
+        'overflow:auto;border-top:1px solid #ff4d8d;white-space:pre-wrap;-webkit-user-select:text;user-select:text;';
+      (document.body || document.documentElement).appendChild(d);
+    }
+    d.textContent += msg + '\n';
+  } catch (e) {}
+};
+window.addEventListener('error', function (e) {
+  var t = e.target;
+  if (t && t !== window && t.tagName) {
+    window.__showErr('[资源加载失败] ' + (t.src || t.href));
+    return;
+  }
+  window.__showErr('[错误] ' + (e.message || '') + '\n  行 ' + e.lineno + ':' + e.colno);
+});
+window.addEventListener('unhandledrejection', function (e) {
+  window.__showErr('[Promise] ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
+});
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#03040a" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
